@@ -204,7 +204,8 @@ class PlotWindow(QWidget):
         """Create a TextItem anchored to the top-right corner of a plot."""
         text = pg.TextItem("", anchor=(1, 0), color=color)
         text.setFont(QFont("Monospace", 11, QFont.Weight.Bold))
-        plot_widget.addItem(text)
+        vb = plot_widget.getPlotItem().getViewBox()
+        vb.addItem(text, ignoreBounds=True)
         return text
 
     def _build_plots(self):
